@@ -13,6 +13,7 @@ package inicio;
  */
 
 import eventadmin.*;
+import javax.swing.JOptionPane;
 import views.*;
 
 public class EventAdminFrame extends javax.swing.JFrame {
@@ -23,9 +24,25 @@ public class EventAdminFrame extends javax.swing.JFrame {
     public EventAdminFrame() {
         initComponents();
         ExpositoresView expView = new ExpositoresView();
-        eventTabb.addTab("Expositores", expView);
-        
+        eventTabb.addTab("Expositores", expView);     
+        /*Inicio Cerrar sistema*/
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                cerrar_sist();
+            }
+        });
+        /*Fin Cerrar sistema*/
     }
+    /*Inicio cerrar_sist*/
+    private void cerrar_sist(){
+        if (JOptionPane.showConfirmDialog(rootPane, "¿Desea realmente salir del sistema?",
+                "EventFull", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }                
+ /*Fin cerrar_sist*/
 
     /**
      * This method is called from within the constructor to initialize the form.
